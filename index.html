@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho2026 - Repositório</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset básico e variáveis de cores solicitadas (Verde, Azul, Amarelo, Laranja + tons IA) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-green: #39ff14;
+            --tech-blue: #00e5ff;
+            --bright-yellow: #ffea00;
+            --cyber-orange: #ff6d00;
+            --dark-bg: #0a0f1d;
+            --glass-bg: rgba(10, 25, 47, 0.7);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Imagens de fundo sobrepostas com opacidade para dar a estética de colagem de IA */
+        .bg-images-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        .bg-img {
+            position: absolute;
+            border-radius: 30px;
+            filter: saturate(1.8) contrast(1.2) blur(1px);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+            object-fit: cover;
+        }
+
+        /* Posicionamento das pequenas imagens de fundo temática Agro/Tecnologia */
+        .bg-img-1 { top: 10%; left: 5%; width: 250px; height: 180px; transform: rotate(-5deg); }
+        .bg-img-2 { top: 15%; right: 5%; width: 220px; height: 220px; transform: rotate(8deg); }
+        .bg-img-3 { bottom: 15%; left: 8%; width: 280px; height: 190px; transform: rotate(12deg); }
+        .bg-img-4 { bottom: 10%; right: 8%; width: 240px; height: 200px; transform: rotate(-8deg); }
+
+        /* Container Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: space-between;
+        }
+
+        /* Topo da Tela - Estilos de Letras Diferentes e Impactantes */
+        .header-text {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        /* Estilo da primeira parte do texto */
+        .txt-agro-forte {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--cyber-orange), var(--bright-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-bottom: 10px;
+            text-shadow: 0 0 40px rgba(255, 109, 0, 0.4);
+        }
+
+        /* Estilo da segunda parte do texto (Futurista/IA) */
+        .txt-futuro-sustentavel {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--neon-green), var(--tech-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            text-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+        }
+
+        /* Card Central Estilo IA / Glassmorphism */
+        .main-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(0, 225, 255, 0.3);
+            border-radius: 24px;
+            padding: 50px;
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+            position: relative;
+            /* Brilho e Sombra Intensa estilo IA */
+            box-shadow: 0 0 50px rgba(0, 229, 255, 0.15), 
+                        inset 0 0 20px rgba(57, 255, 14, 0.1);
+            animation: pulseGlow 4s infinite alternate;
+        }
+
+        /* Animação de pulsação no brilho da IA */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 40px rgba(0, 229, 255, 0.15); border-color: rgba(0, 225, 255, 0.3); }
+            100% { box-shadow: 0 0 60px rgba(57, 255, 20, 0.3); border-color: rgba(57, 255, 20, 0.5); }
+        }
+
+        /* Emblema de Inteligência Artificial */
+        .ia-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #00e5ff, #39ff14);
+            color: #000;
+            padding: 6px 16px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 900;
+            border-radius: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px var(--neon-green);
+            letter-spacing: 1px;
+        }
+
+        /* Título Principal: Agrinho2026 */
+        .title-agrinho {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ffffff, #a5f3fc, var(--tech-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+        }
+
+        .subtitle-repo {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 35px;
+            letter-spacing: 1px;
+        }
+
+        /* Botão Estilizado de Repositório */
+        .btn-repo {
+            display: inline-block;
+            padding: 16px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #000;
+            background: linear-gradient(90deg, var(--bright-yellow), var(--cyber-orange));
+            border-radius: 12px;
+            box-shadow: 0 4px 25px rgba(255, 109, 0, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-repo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px var(--bright-yellow);
+            filter: brightness(1.1);
+        }
+
+        /* Rodapé Simples */
+        footer {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #64748b;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .txt-agro-forte { font-size: 1.8rem; }
+            .txt-futuro-sustentavel { font-size: 1.5rem; }
+            .title-agrinho { font-size: 3rem; }
+            .bg-images-container { display: none; } /* Remove imagens de fundo no mobile para limpar visual */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-images-container">
+        <img src="https://images.unsplash.com/photo-1560493450-b15b2c90f421?auto=format&fit=crop&w=400&q=80" alt="Plantação Tecnológica" class="bg-img bg-img-1">
+        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad451?auto=format&fit=crop&w=400&q=80" alt="Campo de cultivo" class="bg-img bg-img-2">
+        <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=400&q=80" alt="Energia sustentável floresta" class="bg-img bg-img-3">
+        <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=400&q=80" alt="Tecnologia no campo" class="bg-img bg-img-4">
+    </div>
+
+    <div class="container">
+        
+        <header class="header-text">
+            <span class="txt-agro-forte">Agro Forte e Futuro Sustentável</span>
+            <span class="txt-futuro-sustentavel">Equilíbrio sobre a produção e meio ambiente</span>
+        </header>
+
+        <main class="main-card">
+            <div class="ia-badge">AI Generated Interface</div>
+            
+            <h1 class="title-agrinho">Agrinho2026</h1>
+            <p class="subtitle-repo">Repositório Oficial de Projetos e Automação Sustentável</p>
+            
+            <a href="#" class="btn-repo">Explorar Repositório</a>
+        </main>
+
+        <footer>
+            &copy; 2026 - Plataforma de Desenvolvimento IA
+        </footer>
+    </div>
+
+</body>
+</html>
